@@ -6,6 +6,7 @@ import clientRoutes from "./routes/client/index.route";
 import { systemConfig } from "./config/config";
 import path from "path";
 import bodyParser from "body-parser";
+import methodOverride from "method-override";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ const app: Express = express();
 const port: number | string = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(methodOverride("_method"));
 
 app.use(express.static("public"));
 
